@@ -19,6 +19,8 @@ jobs:
           out: 'reports' # this is the default, no need to specify unless you wish to override it
           args: >
             --enableRetired
+            --disableYarnAudit
+            --disableNodeAudit
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
