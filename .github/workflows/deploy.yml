@@ -15,6 +15,7 @@ jobs:
         with:
           project: 'Tic-Tac-Toe'
           path: '.' 
+          format: 'HTML'
           out: 'reports' # this is the default, no need to specify unless you wish to override it
           args: >
             --enableRetired
