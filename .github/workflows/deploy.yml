@@ -1,0 +1,25 @@
+on: [push]
+
+jobs:
+  depchecktest:
+    runs-on: ubuntu-latest
+    name: depecheck_test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build project with nodejs
+        run:  npm install
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          project: 'Tic-Tac-Toe'
+          path: '.' 
+          out: 'reports' # this is the default, no need to specify unless you wish to override it
+          args: >
+            --enableRetired
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
